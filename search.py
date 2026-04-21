@@ -15,7 +15,6 @@ class SpotifySearch:
                                                             client_secret= self.client_secret,
                                                             redirect_uri= self.redirect_uri,
                                                             scope="user-library-read"))
-        self.user_id = self.sp.current_user().get("id")
 
     def get_artist_id(self,artist_name):
         artist_search = self.sp.search(q=f"artist:{artist_name}", type="artist", limit=1)
@@ -27,7 +26,7 @@ class SpotifySearch:
         artist_id = items[0]["id"]
         return artist_id
 
-    def get_song_uri(self,artist_name, song_name):
+    def get_song_uri(self, song_name):
         song_search = self.sp.search(q=f"track:{song_name}", type="track")
         items = song_search["tracks"]["items"]
         if not items:
