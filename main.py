@@ -10,18 +10,18 @@ date = input("Which year do you want to travel to? Enter the date in this format
 chart = billboard.ChartData("hot-100", date)
 song_uri_list = []
 year = date.split("-")[0]
-playlist_name = f"Billboard Playlist Year {year}"
+playlist_name = f"{date} Billboard 100"
 
-for song in chart:
-    # print(f"{song.artist} - {song.title}")
-    artist_id = SpotifySearch.get_artist_id(search, song.artist)
-    if artist_id is None:
-        continue
-    else:
-        artist_uri = f"spotify:artist:{artist_id}"
-        song_uri = SpotifySearch.get_song_uri(search, song.title)
-        song_uri_list.append(song_uri)
-        print(f"Artist: {song.artist}, Artist URI: {artist_uri}, Song: {song.title}, Song URI: {song_uri}")
+# for song in chart:
+#     # print(f"{song.artist} - {song.title}")
+#     artist_id = SpotifySearch.get_artist_id(search, song.artist)
+#     if artist_id is None:
+#         continue
+#     else:
+#         artist_uri = f"spotify:artist:{artist_id}"
+#         song_uri = SpotifySearch.get_song_uri(search, song.title)
+#         song_uri_list.append(song_uri)
+#         print(f"Artist: {song.artist}, Artist URI: {artist_uri}, Song: {song.title}, Song URI: {song_uri}")
 
 # Checks for existing Billboard playlists for current user
 current_playlists = Playlist.get_current_playlists(playlist, playlist_name)

@@ -19,7 +19,7 @@ class Playlist:
     def get_current_playlists(self, pl_name):
         playlists = self.sp.current_user_playlists()
         current_playlists = [playlist for playlist in playlists['items'] if playlist['name'] == pl_name]
-        if current_playlists is None:
+        if not current_playlists:
             print("No Billboard playlists found")
             return None
         else:
