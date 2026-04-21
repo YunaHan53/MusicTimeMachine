@@ -20,7 +20,7 @@ class SpotifySearch:
         artist_search = self.sp.search(q=f"artist:{artist_name}", type="artist", limit=1)
         items = artist_search["artists"]["items"]
         if not items:
-            print(f"Artist {artist_name} not found")
+            # print(f"Artist {artist_name} not found")
             return None
 
         artist_id = items[0]["id"]
@@ -30,12 +30,8 @@ class SpotifySearch:
         song_search = self.sp.search(q=f"track:{song_name}", type="track")
         items = song_search["tracks"]["items"]
         if not items:
-            print(f"Song {song_name} not found")
+            # print(f"Song {song_name} not found")
             return None
-
-        # artist = items[0]["album"]["artists"][0]["name"]
-        # song = items[0]["name"]
-        # print(f"Artist: {artist}, Song: {song}")
 
         song_uri = items[0]["uri"]
         return song_uri

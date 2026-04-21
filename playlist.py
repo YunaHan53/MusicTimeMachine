@@ -24,7 +24,9 @@ class Playlist:
             return None
         else:
             name = current_playlists[0]['name']
-            return name
+            print(f"Playlist found: {name}")
+            playlist_id = current_playlists[0]['id']
+            return playlist_id
 
     def create_playlist(self, year, pl_name):
         new_playlist = self.sp.current_user_playlist_create(
@@ -35,3 +37,6 @@ class Playlist:
         playlist_id = new_playlist.get("id")
         print(f"Playlist created: {playlist_id}")
         return playlist_id
+
+    def add_songs_to_playlist(self, playlist_id, song_uris):
+        self.sp.playlist_add_items(playlist_id, song_uris)
